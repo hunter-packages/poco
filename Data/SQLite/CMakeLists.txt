@@ -10,6 +10,7 @@ file(GLOB_RECURSE HDRS_G "include/*.h" )
 POCO_HEADERS_AUTO( SQLITE_SRCS ${HDRS_G})
 
 if (POCO_UNBUNDLED)
+    hunter_add_package(SQLite3)
     find_package(SQLite3)
     set(DATASQLITELIBS ${SQLITE3_LIBRARIES})
     include_directories("${SQLITE3_INCLUDE_DIRS}")

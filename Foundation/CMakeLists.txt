@@ -42,6 +42,7 @@ if (POCO_UNBUNDLED)
 		src/pcre_tables.c
 	)
 
+	hunter_add_package(ZLIB)
 	find_package(ZLIB REQUIRED)
 	set(SYSLIBS ${SYSLIBS} ${ZLIB_LIBRARIES})
 	include_directories(${ZLIB_INCLUDE_DIRS})
