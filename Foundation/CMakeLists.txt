@@ -41,11 +41,15 @@ if (POCO_UNBUNDLED)
 		src/pcre_ucd.c
 		src/pcre_tables.c
 	)
-
-	hunter_add_package(ZLIB)
-	find_package(ZLIB REQUIRED)
-	set(SYSLIBS ${SYSLIBS} ${ZLIB_LIBRARIES})
-	include_directories(${ZLIB_INCLUDE_DIRS})
+	if (HUNTER_ENABLED)
+		hunter_add_package(ZLIB)
+		find_package(ZLIB CONFIG REQUIRED)
+		set(SYSLIBS ${SYSLIBS} "ZLIB::zlib")
+	else()
+		find_package(ZLIB REQUIRED)
+        	set(SYSLIBS ${SYSLIBS} ${ZLIB_LIBRARIES})
+        	include_directories(${ZLIB_INCLUDE_DIRS})
+	endif()
 
 	add_definitions(-DPOCO_UNBUNDLED)
 
