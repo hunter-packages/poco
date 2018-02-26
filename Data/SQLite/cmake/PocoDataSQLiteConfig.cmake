@@ -5,7 +5,6 @@ include("${CMAKE_CURRENT_LIST_DIR}/PocoDataSQLiteTargets.cmake")
 
 if (@POCO_UNBUNDLED@)
     if (@HUNTER_ENABLED@)
-        hunter_add_package(sqlite3)
         find_package(sqlite3 CONFIG REQUIRED)
     endif()
 endif()
