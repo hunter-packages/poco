@@ -1,8 +1,6 @@
 //
 // SessionPool.cpp
 //
-// $Id: //poco/Main/Data/src/SessionPool.cpp#3 $
-//
 // Library: Data
 // Package: SessionPooling
 // Module:  SessionPool
@@ -237,6 +235,8 @@ void SessionPool::putBack(PooledSessionHolderPtr pHolder)
 	{
 		if (pHolder->session()->isConnected())
 		{
+			pHolder->session()->reset();
+
 			// reverse settings applied at acquisition time, if any
 			AddPropertyMap::iterator pIt = _addPropertyMap.find(pHolder->session());
 			if (pIt != _addPropertyMap.end())

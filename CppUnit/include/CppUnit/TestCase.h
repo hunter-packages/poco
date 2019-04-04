@@ -1,8 +1,6 @@
 //
 // TestCase.h
 //
-// $Id: //poco/1.4/CppUnit/include/CppUnit/TestCase.h#1 $
-//
 
 
 #ifndef CppUnit_TestCase_INCLUDED
@@ -14,6 +12,7 @@
 #include "CppUnit/Test.h"
 #include "CppUnit/CppUnitException.h"
 #include <string>
+#include <vector>
 #include <typeinfo>
 
 
@@ -98,6 +97,7 @@ public:
 	std::string toString();
 
 	virtual void setUp();
+	virtual void setUp(const std::vector<std::string>& setup);
 	virtual void tearDown();
 
 protected:
@@ -204,6 +204,12 @@ inline void TestCase::setUp()
 }
 
 
+// A hook for fixture set up with command line arguments
+inline void TestCase::setUp(const std::vector<std::string>& setup)
+{
+}
+
+
 // A hook for fixture tear down
 inline void TestCase::tearDown()
 {
@@ -222,9 +228,18 @@ inline std::string TestCase::toString()
 // and file name at the point of an error.
 // Just goes to show that preprocessors do have some
 // redeeming qualities.
+
+// for backward compatibility only
+// (may conflict with C assert, use at your own risk)
 #undef assert
 #define assert(condition) \
 	(this->assertImplementation((condition), (#condition), __LINE__, __FILE__))
+
+#define assertTrue(condition) \
+	(this->assertImplementation((condition), (#condition), __LINE__, __FILE__))
+
+#define assertFalse(condition) \
+	(this->assertImplementation(!(condition), (#condition), __LINE__, __FILE__))
 
 #define loop_1_assert(data1line, condition) \
 	(this->loop1assertImplementation((condition), (#condition), __LINE__, data1line, __FILE__))

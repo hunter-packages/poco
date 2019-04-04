@@ -1,8 +1,6 @@
 #
 # Makefile
 #
-# $Id: //poco/Main/template/TestSuite.make#3 $
-#
 # Makefile for Poco NetSSL testsuite
 #
 
@@ -17,7 +15,8 @@ endif
 
 objects = NetSSLTestSuite Driver \
 	HTTPSClientSessionTest HTTPSClientTestSuite HTTPSServerTest HTTPSServerTestSuite \
-	HTTPSStreamFactoryTest HTTPSTestServer TCPServerTest TCPServerTestSuite
+	HTTPSStreamFactoryTest HTTPSTestServer TCPServerTest TCPServerTestSuite \
+	WebSocketTest WebSocketTestSuite
 
 target         = testrunner
 target_version = 1

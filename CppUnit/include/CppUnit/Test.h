@@ -1,8 +1,6 @@
 //
 // Test.h
 //
-// $Id: //poco/1.4/CppUnit/include/CppUnit/Test.h#1 $
-//
 
 
 #ifndef CppUnit_Test_INCLUDED
@@ -11,6 +9,7 @@
 
 #include "CppUnit/CppUnit.h"
 #include <string>
+#include <vector>
 
 
 namespace CppUnit {
@@ -31,6 +30,12 @@ public:
 	virtual void run(TestResult* result) = 0;
 	virtual int countTestCases() = 0;
 	virtual std::string toString() = 0;
+
+	void addSetup(const std::vector<std::string>& setup);
+	const std::vector<std::string>& setup() const;
+
+private:
+	std::vector<std::string>	_setup;
 };
 
 
@@ -56,6 +61,18 @@ inline int Test::countTestCases()
 inline std::string Test::toString()
 {
 	return "";
+}
+
+
+inline void Test::addSetup(const std::vector<std::string>& setup)
+{
+	_setup = setup;
+}
+
+
+inline const std::vector<std::string>& Test::setup() const
+{
+	return _setup;
 }
 
 

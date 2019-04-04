@@ -1,8 +1,6 @@
 //
 // MapConfigurationTest.cpp
 //
-// $Id: //poco/1.4/Util/testsuite/src/MapConfigurationTest.cpp#1 $
-//
 // Copyright (c) 2004-2006, Applied Informatics Software Engineering GmbH.
 // and Contributors.
 //
@@ -37,10 +35,10 @@ void MapConfigurationTest::testClear()
 	AutoPtr<MapConfiguration> pConf = new MapConfiguration;
 	
 	pConf->setString("foo", "bar");
-	assert (pConf->hasProperty("foo"));
+	assertTrue (pConf->hasProperty("foo"));
 	
 	pConf->clear();
-	assert (!pConf->hasProperty("foo"));
+	assertTrue (!pConf->hasProperty("foo"));
 }
 
 

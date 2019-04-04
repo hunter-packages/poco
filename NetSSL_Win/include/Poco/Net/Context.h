@@ -1,8 +1,6 @@
 //
 // Context.h
 //
-// $Id$
-//
 // Library: NetSSL_Win
 // Package: SSLCore
 // Module:  Context
@@ -26,6 +24,7 @@
 #include "Poco/AutoPtr.h"
 #include "Poco/Mutex.h"
 #include <vector>
+#if defined(POCO_OS_FAMILY_WINDOWS)
 #include <windows.h>
 #include <wincrypt.h>
 #include <schannel.h>
@@ -34,6 +33,7 @@
 #endif
 #include <security.h>
 #include <sspi.h>
+#endif
 
 
 namespace Poco {

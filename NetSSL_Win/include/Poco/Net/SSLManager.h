@@ -1,8 +1,6 @@
 //
 // SSLManager.h
 //
-// $Id$
-//
 // Library: NetSSL_Win
 // Package: SSLCore
 // Module:  SSLManager
@@ -29,6 +27,7 @@
 #include "Poco/Util/AbstractConfiguration.h"
 #include "Poco/BasicEvent.h"
 #include "Poco/SharedPtr.h"
+#if defined(POCO_OS_FAMILY_WINDOWS)
 #include <wincrypt.h>
 #include <schannel.h>
 #ifndef SECURITY_WIN32
@@ -36,6 +35,7 @@
 #endif
 #include <security.h>
 #include <sspi.h>
+#endif
 
 
 namespace Poco {

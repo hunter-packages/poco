@@ -1,8 +1,6 @@
 //
 // FTPClientSession.cpp
 //
-// $Id: //poco/svn/Net/src/FTPClientSession.cpp#2 $
-//
 // Library: Net
 // Package: FTP
 // Module:  FTPClientSession
@@ -183,20 +181,24 @@ void FTPClientSession::logout()
 	{
 		try { endTransfer(); }
 		catch (...) { }
+		_isLoggedIn = false;
 		std::string response;
 		sendCommand("QUIT", response);
-		_isLoggedIn = false;
 	}
 }
 
 
 void FTPClientSession::close()
 {
-	logout();
-	_pControlSocket->close();
-	delete _pControlSocket;
-	_pControlSocket = 0;
+	try { logout(); }
+	catch (...) {}
 	_serverReady = false;
+	if (_pControlSocket)
+	{
+		_pControlSocket->close();
+		delete _pControlSocket;
+		_pControlSocket = 0;
+	}
 }
 
 
@@ -437,7 +439,8 @@ StreamSocket FTPClientSession::activeDataConnection(const std::string& command, 
 StreamSocket FTPClientSession::passiveDataConnection(const std::string& command, const std::string& arg)
 {
 	SocketAddress sa(sendPassiveCommand());
-	StreamSocket sock(sa);
+	StreamSocket sock;
+	sock.connect(sa, _timeout);
 	std::string response;
 	int status = sendCommand(command, arg, response);
 	if (!isPositivePreliminary(status)) 

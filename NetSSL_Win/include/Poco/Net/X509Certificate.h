@@ -1,8 +1,6 @@
 //
 // X509Certificate.h
 //
-// $Id$
-//
 // Library: NetSSL_Win
 // Package: Certificate
 // Module:  X509Certificate
@@ -24,7 +22,9 @@
 #include "Poco/DateTime.h"
 #include <set>
 #include <istream>
+#if defined(POCO_OS_FAMILY_WINDOWS)
 #include <wincrypt.h>
+#endif
 
 
 namespace Poco {

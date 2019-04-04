@@ -1,9 +1,7 @@
 //
 // StatementExecutor.h
 //
-// $Id: //poco/1.4/Data/MySQL/include/Poco/Data/MySQL/StatementExecutor.h#1 $
-//
-// Library: Data
+// Library: Data/MySQL
 // Package: MySQL
 // Module:  StatementExecutor
 //
@@ -78,7 +76,7 @@ private:
 	MYSQL*      _pSessionHandle;
 	MYSQL_STMT* _pHandle;
 	int         _state;
-	int         _affectedRowCount;
+	std::size_t _affectedRowCount;
 	std::string _query;
 };
 

@@ -57,7 +57,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/FORCE:MULTIPLE "
-				AdditionalDependencies="CppUnitd.lib "
+				AdditionalDependencies=""
 				OutputFile="bin\$(PlatformName)\shared\TestSuited.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\lib\$(PlatformName)"
@@ -130,7 +130,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/FORCE:MULTIPLE "
-				AdditionalDependencies="CppUnit.lib "
+				AdditionalDependencies=""
 				OutputFile="bin\$(PlatformName)\shared\TestSuite.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\lib\$(PlatformName)"
@@ -204,7 +204,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/FORCE:MULTIPLE "
-				AdditionalDependencies="CppUnitmtd.lib iphlpapi.lib "
+				AdditionalDependencies=""
 				OutputFile="bin\$(PlatformName)\static_mt\TestSuited.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\lib\$(PlatformName)"
@@ -280,7 +280,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/FORCE:MULTIPLE "
-				AdditionalDependencies="CppUnitmt.lib iphlpapi.lib "
+				AdditionalDependencies=""
 				OutputFile="bin\$(PlatformName)\static_mt\TestSuite.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\lib\$(PlatformName)"
@@ -354,7 +354,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/FORCE:MULTIPLE "
-				AdditionalDependencies="CppUnitmdd.lib iphlpapi.lib "
+				AdditionalDependencies=""
 				OutputFile="bin\$(PlatformName)\static_md\TestSuited.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="..\..\lib\$(PlatformName)"
@@ -430,7 +430,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/FORCE:MULTIPLE "
-				AdditionalDependencies="CppUnitmd.lib iphlpapi.lib "
+				AdditionalDependencies=""
 				OutputFile="bin\$(PlatformName)\static_md\TestSuite.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\lib\$(PlatformName)"
@@ -471,6 +471,8 @@
 				<File
 					RelativePath=".\src\NameTest.h"/>
 				<File
+					RelativePath=".\src\XMLStreamParserTest.h"/>
+				<File
 					RelativePath=".\src\XMLWriterTest.h"/>
 			</Filter>
 			<Filter
@@ -479,6 +481,8 @@
 					RelativePath=".\src\NamePoolTest.cpp"/>
 				<File
 					RelativePath=".\src\NameTest.cpp"/>
+				<File
+					RelativePath=".\src\XMLStreamParserTest.cpp"/>
 				<File
 					RelativePath=".\src\XMLWriterTest.cpp"/>
 			</Filter>
@@ -583,7 +587,7 @@
 			<Filter
 				Name="Source Files">
 				<File
-					RelativePath=".\src\WinCEDriver.cpp"/>
+					RelativePath=".\src\Driver.cpp"/>
 			</Filter>
 		</Filter>
 	</Files>

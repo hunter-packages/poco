@@ -1,8 +1,6 @@
 //
 // ICMPSocket.h
 //
-// $Id: //poco/1.4/Net/include/Poco/Net/ICMPSocket.h#1 $
-//
 // Library: Net
 // Package: ICMP
 // Module:  ICMPSocket
@@ -33,7 +31,7 @@ class Net_API ICMPSocket: public Socket
 	/// ICMP client socket.
 {
 public:
-	ICMPSocket(IPAddress::Family family, int dataSize = 48, int ttl = 128, int timeout = 500000);
+	ICMPSocket(SocketAddress::Family family, int dataSize = 48, int ttl = 128, int timeout = 5000000);
 		/// Creates an unconnected ICMP socket.
 		///
 		/// The socket will be created for the
@@ -71,16 +69,23 @@ public:
 	int dataSize() const;
 		/// Returns the data size in bytes.
 
+	int packetSize() const;
+		/// Returns the packet size in bytes.
+
 	int ttl() const;
 		/// Returns the Time-To-Live value.
 
 	int timeout() const;
 		/// Returns the socket timeout value.
 
+	static Poco::UInt16 mtu(const SocketAddress& address, Poco::UInt16 sz);
+		/// Returns minimum payload path MTU size for the destination,
+		/// or 0 if MTU can not be determined.
+
 protected:
 	ICMPSocket(SocketImpl* pImpl);
 		/// Creates the Socket and attaches the given SocketImpl.
-		/// The socket takes owership of the SocketImpl.
+		/// The socket takes ownership of the SocketImpl.
 		///
 		/// The SocketImpl must be a ICMPSocketImpl, otherwise
 		/// an InvalidArgumentException will be thrown.

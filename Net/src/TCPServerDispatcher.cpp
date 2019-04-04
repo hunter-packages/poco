@@ -1,8 +1,6 @@
 //
 // TCPServerDispatcher.cpp
 //
-// $Id: //poco/1.4/Net/src/TCPServerDispatcher.cpp#1 $
-//
 // Library: Net
 // Package: TCPServer
 // Module:  TCPServerDispatcher
@@ -98,7 +96,7 @@ void TCPServerDispatcher::release()
 
 void TCPServerDispatcher::run()
 {
-	AutoPtr<TCPServerDispatcher> guard(this, true); // ensure object stays alive
+	AutoPtr<TCPServerDispatcher> guard(this); // ensure _rc is decreased when function exits; it was incremented in enqueue()
 
 	int idleTime = (int) _pParams->getThreadIdleTime().totalMilliseconds();
 
@@ -110,11 +108,11 @@ void TCPServerDispatcher::run()
 			TCPConnectionNotification* pCNf = dynamic_cast<TCPConnectionNotification*>(pNf.get());
 			if (pCNf)
 			{
-#if __cplusplus < 201103L
+#ifndef POCO_ENABLE_CPP11
 				std::auto_ptr<TCPServerConnection> pConnection(_pConnectionFactory->createConnection(pCNf->socket()));
 #else
 				std::unique_ptr<TCPServerConnection> pConnection(_pConnectionFactory->createConnection(pCNf->socket()));
-#endif
+#endif // POCO_ENABLE_CPP11
 				poco_check_ptr(pConnection.get());
 				beginConnection();
 				pConnection->start();
@@ -151,6 +149,10 @@ void TCPServerDispatcher::enqueue(const StreamSocket& socket)
 			{
 				_threadPool.startWithPriority(_pParams->getThreadPriority(), *this, threadName);
 				++_currentThreads;
+				// Ensure this object lives at least until run() starts
+				// Small chance of leaking if threadpool is stopped before this
+				// work runs, but better than a dangling pointer and crash!
+				++_rc;
 			}
 			catch (Poco::Exception&)
 			{

@@ -1,8 +1,6 @@
 //
 // IPAddress.cpp
 //
-// $Id: //poco/1.4/Net/src/IPAddress.cpp#5 $
-//
 // Library: Net
 // Package: NetCore
 // Module:  IPAddress
@@ -145,7 +143,7 @@ const void* IPv4AddressImpl::addr() const
 
 IPAddressImpl::Family IPv4AddressImpl::family() const
 {
-	return IPAddressImpl::IPv4;
+	return AddressFamily::IPv4;
 }
 
 
@@ -432,13 +430,16 @@ std::string IPv6AddressImpl::toString() const
 		else
 			result.append("::ffff:");
 		const UInt8* bytes = reinterpret_cast<const UInt8*>(&_addr);
-		NumberFormatter::append(result, bytes[12]);
-		result.append(".");
-		NumberFormatter::append(result, bytes[13]);
-		result.append(".");
-		NumberFormatter::append(result, bytes[14]);
-		result.append(".");
-		NumberFormatter::append(result, bytes[15]);
+		if (bytes[12] != 0) // only 0.0.0.0 can start with zero
+		{
+			NumberFormatter::append(result, bytes[12]);
+			result.append(".");
+			NumberFormatter::append(result, bytes[13]);
+			result.append(".");
+			NumberFormatter::append(result, bytes[14]);
+			result.append(".");
+			NumberFormatter::append(result, bytes[15]);
+		}
 		return result;
 	}
 	else
@@ -499,7 +500,7 @@ const void* IPv6AddressImpl::addr() const
 
 IPAddressImpl::Family IPv6AddressImpl::family() const
 {
-	return IPAddressImpl::IPv6;
+	return AddressFamily::IPv6;
 }
 
 
@@ -534,6 +535,8 @@ unsigned IPv6AddressImpl::prefixLength() const
 	throw NotImplementedException("prefixLength() not implemented");
 #endif
 }
+
+
 Poco::UInt32 IPv6AddressImpl::scope() const
 {
 	return _scope;

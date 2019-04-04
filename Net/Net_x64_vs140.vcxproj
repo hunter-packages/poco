@@ -85,13 +85,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros"/>
   <PropertyGroup>
-    <_ProjectFileVersion>14.0.23107.0</_ProjectFileVersion>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_shared|x64'">PocoNet64d</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_static_md|x64'">PocoNetmdd</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_static_mt|x64'">PocoNetmtd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_static_md|x64'">PocoNetMDd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_static_mt|x64'">PocoNetMTd</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='release_shared|x64'">PocoNet64</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_md|x64'">PocoNetmd</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_mt|x64'">PocoNetmt</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_md|x64'">PocoNetMD</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_mt|x64'">PocoNetMT</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug_shared|x64'">
     <OutDir>..\bin64\</OutDir>
@@ -202,7 +202,8 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>..\lib64\PocoNetmtd.lib</OutputFile>
+      <OutputFile>..\lib64\PocoNetMTd.lib</OutputFile>
+      <TargetMachine>MachineX64</TargetMachine>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_static_mt|x64'">
@@ -226,7 +227,8 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>..\lib64\PocoNetmt.lib</OutputFile>
+      <OutputFile>..\lib64\PocoNetMT.lib</OutputFile>
+      <TargetMachine>MachineX64</TargetMachine>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug_static_md|x64'">
@@ -243,13 +245,14 @@
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
-      <ProgramDataBaseFileName>..\lib64\PocoNetmdd.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>..\lib64\PocoNetMDd.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>..\lib64\PocoNetmdd.lib</OutputFile>
+      <OutputFile>..\lib64\PocoNetMDd.lib</OutputFile>
+      <TargetMachine>MachineX64</TargetMachine>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_static_md|x64'">
@@ -273,7 +276,8 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>..\lib64\PocoNetmd.lib</OutputFile>
+      <OutputFile>..\lib64\PocoNetMD.lib</OutputFile>
+      <TargetMachine>MachineX64</TargetMachine>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -335,6 +339,7 @@
     <ClInclude Include="include\Poco\Net\MulticastSocket.h"/>
     <ClInclude Include="include\Poco\Net\MultipartReader.h"/>
     <ClInclude Include="include\Poco\Net\MultipartWriter.h"/>
+    <ClInclude Include="include\Poco\Net\MultiSocketPoller.h"/>
     <ClInclude Include="include\Poco\Net\NameValueCollection.h"/>
     <ClInclude Include="include\Poco\Net\Net.h"/>
     <ClInclude Include="include\Poco\Net\NetException.h"/>
@@ -350,6 +355,7 @@
     <ClInclude Include="include\Poco\Net\PartHandler.h"/>
     <ClInclude Include="include\Poco\Net\PartSource.h"/>
     <ClInclude Include="include\Poco\Net\PartStore.h"/>
+    <ClInclude Include="include\Poco\Net\PollSet.h"/>
     <ClInclude Include="include\Poco\Net\POP3ClientSession.h"/>
     <ClInclude Include="include\Poco\Net\QuotedPrintableDecoder.h"/>
     <ClInclude Include="include\Poco\Net\QuotedPrintableEncoder.h"/>
@@ -359,6 +365,7 @@
     <ClInclude Include="include\Poco\Net\RemoteSyslogListener.h"/>
     <ClInclude Include="include\Poco\Net\ServerSocket.h"/>
     <ClInclude Include="include\Poco\Net\ServerSocketImpl.h"/>
+    <ClInclude Include="include\Poco\Net\SingleSocketPoller.h"/>
     <ClInclude Include="include\Poco\Net\SMTPChannel.h"/>
     <ClInclude Include="include\Poco\Net\SMTPClientSession.h"/>
     <ClInclude Include="include\Poco\Net\Socket.h"/>
@@ -380,6 +387,11 @@
     <ClInclude Include="include\Poco\Net\TCPServerConnectionFactory.h"/>
     <ClInclude Include="include\Poco\Net\TCPServerDispatcher.h"/>
     <ClInclude Include="include\Poco\Net\TCPServerParams.h"/>
+    <ClInclude Include="include\Poco\Net\UDPClient.h"/>
+    <ClInclude Include="include\Poco\Net\UDPHandler.h"/>
+    <ClInclude Include="include\Poco\Net\UDPServer.h"/>
+    <ClInclude Include="include\Poco\Net\UDPServerParams.h"/>
+    <ClInclude Include="include\Poco\Net\UDPSocketReader.h"/>
     <ClInclude Include="include\Poco\Net\WebSocket.h"/>
     <ClInclude Include="include\Poco\Net\WebSocketImpl.h"/>
   </ItemGroup>
@@ -454,6 +466,7 @@
     <ClCompile Include="src\PartHandler.cpp"/>
     <ClCompile Include="src\PartSource.cpp"/>
     <ClCompile Include="src\PartStore.cpp"/>
+    <ClCompile Include="src\PollSet.cpp"/>
     <ClCompile Include="src\POP3ClientSession.cpp"/>
     <ClCompile Include="src\QuotedPrintableDecoder.cpp"/>
     <ClCompile Include="src\QuotedPrintableEncoder.cpp"/>
@@ -481,6 +494,8 @@
     <ClCompile Include="src\TCPServerConnectionFactory.cpp"/>
     <ClCompile Include="src\TCPServerDispatcher.cpp"/>
     <ClCompile Include="src\TCPServerParams.cpp"/>
+    <ClCompile Include="src\UDPClient.cpp"/>
+    <ClCompile Include="src\UDPServerParams.cpp"/>
     <ClCompile Include="src\WebSocket.cpp"/>
     <ClCompile Include="src\WebSocketImpl.cpp"/>
   </ItemGroup>

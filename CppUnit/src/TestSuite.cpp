@@ -1,8 +1,6 @@
 //
 // TestSuite.cpp
 //
-// $Id: //poco/1.4/CppUnit/src/TestSuite.cpp#1 $
-//
 
 
 #include "CppUnit/TestSuite.h"
@@ -29,6 +27,8 @@ void TestSuite::run(TestResult *result)
 			break;
 
 		Test *test = *it;
+		if (!setup().empty())
+			test->addSetup(setup());
 		test->run(result);
 	}
 }

@@ -1,8 +1,6 @@
 //
 // DateTimeTest.h
 //
-// $Id: //poco/1.4/Foundation/testsuite/src/DateTimeTest.h#1 $
-//
 // Definition of the DateTimeTest class.
 //
 // Copyright (c) 2004-2006, Applied Informatics Software Engineering GmbH.
@@ -43,6 +41,7 @@ public:
 	void testIncrementDecrement();
 	void testUTC();
 	void testLeapSeconds();
+	void testTM();
 
 	void setUp();
 	void tearDown();

@@ -2,28 +2,28 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Zip">
-      <UniqueIdentifier>{6349bd0f-a698-4f8c-a0e4-6030b2396a4d}</UniqueIdentifier>
+      <UniqueIdentifier>{794ce681-481f-415d-b35e-6cbe81933f5c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Zip\Header Files">
-      <UniqueIdentifier>{f15a913e-7e60-419f-926f-67cd20acc670}</UniqueIdentifier>
+      <UniqueIdentifier>{b49fd611-ffc2-4dfc-bb65-022817cdbb06}</UniqueIdentifier>
     </Filter>
     <Filter Include="Zip\Source Files">
-      <UniqueIdentifier>{dd7b2d44-6f92-4601-a4ac-ed7baa9c3523}</UniqueIdentifier>
+      <UniqueIdentifier>{4738841d-2d7a-43c8-a683-a424ca6bf7ae}</UniqueIdentifier>
     </Filter>
     <Filter Include="_Suite">
-      <UniqueIdentifier>{0deec944-f185-4814-88d0-b2ebf0dd1113}</UniqueIdentifier>
+      <UniqueIdentifier>{2794a491-3270-4d90-a26f-721e1ce4690f}</UniqueIdentifier>
     </Filter>
     <Filter Include="_Suite\Header Files">
-      <UniqueIdentifier>{24e97296-8722-4bbf-9a18-23dfc5aed015}</UniqueIdentifier>
+      <UniqueIdentifier>{a2787a20-8f64-4abe-91ed-c2e51bb5fda3}</UniqueIdentifier>
     </Filter>
     <Filter Include="_Suite\Source Files">
-      <UniqueIdentifier>{bf2bd599-51c3-46ee-bdb9-33f49903f3ec}</UniqueIdentifier>
+      <UniqueIdentifier>{13480909-db09-4ebd-97c6-b7da440199de}</UniqueIdentifier>
     </Filter>
     <Filter Include="_Driver">
-      <UniqueIdentifier>{d5976a15-d365-4968-be26-6f11fb26d417}</UniqueIdentifier>
+      <UniqueIdentifier>{ecf64216-cefe-459d-9fd3-1dbe28b6f5ef}</UniqueIdentifier>
     </Filter>
     <Filter Include="_Driver\Source Files">
-      <UniqueIdentifier>{b66f2d41-62e9-41c1-85c0-bfd64edc83e3}</UniqueIdentifier>
+      <UniqueIdentifier>{cab7400d-26c8-4d2e-bc02-64d9fa0f811f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +53,7 @@
     <ClCompile Include="src\ZipTestSuite.cpp">
       <Filter>_Suite\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\WinCEDriver.cpp">
+    <ClCompile Include="src\Driver.cpp">
       <Filter>_Driver\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

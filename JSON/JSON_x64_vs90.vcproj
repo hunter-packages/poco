@@ -186,7 +186,7 @@
 				ForceConformanceInForLoopScope="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib64\PocoJSONmtd.pdb"
+				ProgramDataBaseFileName="..\lib64\PocoJSONMTd.pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -201,7 +201,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib64\PocoJSONmtd.lib"
+				OutputFile="..\lib64\PocoJSONMTd.lib"
 				TargetMachine="17"/>
 			<Tool
 				Name="VCALinkTool"/>
@@ -260,7 +260,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib64\PocoJSONmt.lib"
+				OutputFile="..\lib64\PocoJSONMT.lib"
 				TargetMachine="17"/>
 			<Tool
 				Name="VCALinkTool"/>
@@ -303,7 +303,7 @@
 				ForceConformanceInForLoopScope="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib64\PocoJSONmdd.pdb"
+				ProgramDataBaseFileName="..\lib64\PocoJSONMDd.pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -318,7 +318,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib64\PocoJSONmdd.lib"
+				OutputFile="..\lib64\PocoJSONMDd.lib"
 				TargetMachine="17"/>
 			<Tool
 				Name="VCALinkTool"/>
@@ -377,7 +377,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\lib64\PocoJSONmd.lib"
+				OutputFile="..\lib64\PocoJSONMD.lib"
 				TargetMachine="17"/>
 			<Tool
 				Name="VCALinkTool"/>
@@ -398,15 +398,62 @@
 			<File
 				RelativePath=".\src\Array.cpp"/>
 			<File
-				RelativePath=".\src\ParseHandler.cpp"/>
-			<File
 				RelativePath=".\src\Handler.cpp"/>
 			<File
 				RelativePath=".\src\JSONException.cpp"/>
 			<File
 				RelativePath=".\src\Object.cpp"/>
 			<File
+				RelativePath=".\src\ParseHandler.cpp"/>
+			<File
 				RelativePath=".\src\Parser.cpp"/>
+			<File
+				RelativePath=".\src\ParserImpl.cpp"/>
+			<File
+				RelativePath=".\src\pdjson.c">
+				<FileConfiguration
+					Name="debug_shared|x64">
+					<Tool
+						Name="VCCLCompilerTool"
+						ForceConformanceInForLoopScope="true"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="release_shared|x64">
+					<Tool
+						Name="VCCLCompilerTool"
+						ForceConformanceInForLoopScope="true"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="debug_static_mt|x64">
+					<Tool
+						Name="VCCLCompilerTool"
+						ForceConformanceInForLoopScope="true"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="release_static_mt|x64">
+					<Tool
+						Name="VCCLCompilerTool"
+						ForceConformanceInForLoopScope="true"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="debug_static_md|x64">
+					<Tool
+						Name="VCCLCompilerTool"
+						ForceConformanceInForLoopScope="true"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="release_static_md|x64">
+					<Tool
+						Name="VCCLCompilerTool"
+						ForceConformanceInForLoopScope="true"
+						CompileAs="2"/>
+				</FileConfiguration>
+			</File>
 			<File
 				RelativePath=".\src\PrintHandler.cpp"/>
 			<File
@@ -431,9 +478,13 @@
 			<File
 				RelativePath=".\include\Poco\JSON\Object.h"/>
 			<File
+				RelativePath=".\include\Poco\JSON\ParseHandler.h"/>
+			<File
 				RelativePath=".\include\Poco\JSON\Parser.h"/>
 			<File
-				RelativePath=".\include\Poco\JSON\ParseHandler.h"/>
+				RelativePath=".\include\Poco\JSON\ParserImpl.h"/>
+			<File
+				RelativePath=".\src\pdjson.h"/>
 			<File
 				RelativePath=".\include\Poco\JSON\PrintHandler.h"/>
 			<File

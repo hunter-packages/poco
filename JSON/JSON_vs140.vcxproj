@@ -85,13 +85,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros"/>
   <PropertyGroup>
-    <_ProjectFileVersion>14.0.23107.0</_ProjectFileVersion>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_shared|Win32'">PocoJSONd</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_static_md|Win32'">PocoJSONmdd</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_static_mt|Win32'">PocoJSONmtd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_static_md|Win32'">PocoJSONMDd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug_static_mt|Win32'">PocoJSONMTd</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='release_shared|Win32'">PocoJSON</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_md|Win32'">PocoJSONmd</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_mt|Win32'">PocoJSONmt</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_md|Win32'">PocoJSONMD</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release_static_mt|Win32'">PocoJSONMT</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug_shared|Win32'">
     <OutDir>..\bin\</OutDir>
@@ -200,7 +200,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>..\lib\PocoJSONmtd.lib</OutputFile>
+      <OutputFile>..\lib\PocoJSONMTd.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_static_mt|Win32'">
@@ -224,7 +224,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>..\lib\PocoJSONmt.lib</OutputFile>
+      <OutputFile>..\lib\PocoJSONMT.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug_static_md|Win32'">
@@ -241,13 +241,13 @@
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <PrecompiledHeader/>
-      <ProgramDataBaseFileName>..\lib\PocoJSONmdd.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>..\lib\PocoJSONMDd.pdb</ProgramDataBaseFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>..\lib\PocoJSONmdd.lib</OutputFile>
+      <OutputFile>..\lib\PocoJSONMDd.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_static_md|Win32'">
@@ -272,7 +272,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>..\lib\PocoJSONmd.lib</OutputFile>
+      <OutputFile>..\lib\PocoJSONMD.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -282,6 +282,21 @@
     <ClCompile Include="src\Object.cpp"/>
     <ClCompile Include="src\ParseHandler.cpp"/>
     <ClCompile Include="src\Parser.cpp"/>
+    <ClCompile Include="src\ParserImpl.cpp"/>
+    <ClCompile Include="src\pdjson.c">
+      <ForceConformanceInForLoopScope Condition="'$(Configuration)|$(Platform)'=='debug_shared|Win32'">true</ForceConformanceInForLoopScope>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='debug_shared|Win32'">CompileAsCpp</CompileAs>
+      <ForceConformanceInForLoopScope Condition="'$(Configuration)|$(Platform)'=='debug_static_md|Win32'">true</ForceConformanceInForLoopScope>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='debug_static_md|Win32'">CompileAsCpp</CompileAs>
+      <ForceConformanceInForLoopScope Condition="'$(Configuration)|$(Platform)'=='debug_static_mt|Win32'">true</ForceConformanceInForLoopScope>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='debug_static_mt|Win32'">CompileAsCpp</CompileAs>
+      <ForceConformanceInForLoopScope Condition="'$(Configuration)|$(Platform)'=='release_shared|Win32'">true</ForceConformanceInForLoopScope>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='release_shared|Win32'">CompileAsCpp</CompileAs>
+      <ForceConformanceInForLoopScope Condition="'$(Configuration)|$(Platform)'=='release_static_md|Win32'">true</ForceConformanceInForLoopScope>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='release_static_md|Win32'">CompileAsCpp</CompileAs>
+      <ForceConformanceInForLoopScope Condition="'$(Configuration)|$(Platform)'=='release_static_mt|Win32'">true</ForceConformanceInForLoopScope>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='release_static_mt|Win32'">CompileAsCpp</CompileAs>
+    </ClCompile>
     <ClCompile Include="src\PrintHandler.cpp"/>
     <ClCompile Include="src\Query.cpp"/>
     <ClCompile Include="src\Stringifier.cpp"/>
@@ -296,11 +311,13 @@
     <ClInclude Include="include\Poco\JSON\Object.h"/>
     <ClInclude Include="include\Poco\JSON\ParseHandler.h"/>
     <ClInclude Include="include\Poco\JSON\Parser.h"/>
+    <ClInclude Include="include\Poco\JSON\ParserImpl.h"/>
     <ClInclude Include="include\Poco\JSON\PrintHandler.h"/>
     <ClInclude Include="include\Poco\JSON\Query.h"/>
     <ClInclude Include="include\Poco\JSON\Stringifier.h"/>
     <ClInclude Include="include\Poco\JSON\Template.h"/>
     <ClInclude Include="include\Poco\JSON\TemplateCache.h"/>
+    <ClInclude Include="src\pdjson.h"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <ImportGroup Label="ExtensionTargets"/>

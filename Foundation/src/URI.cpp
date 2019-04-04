@@ -1,8 +1,6 @@
 //
 // URI.cpp
 //
-// $Id: //poco/1.4/Foundation/src/URI.cpp#5 $
-//
 // Library: Foundation
 // Package: URI
 // Module:  URI
@@ -25,10 +23,11 @@
 namespace Poco {
 
 
-const std::string URI::RESERVED_PATH     = "?#";
-const std::string URI::RESERVED_QUERY    = "?#/";
-const std::string URI::RESERVED_FRAGMENT = "";
-const std::string URI::ILLEGAL           = "%<>{}|\\\"^`";
+const std::string URI::RESERVED_PATH        = "?#";
+const std::string URI::RESERVED_QUERY       = "?#/:;+@";
+const std::string URI::RESERVED_QUERY_PARAM = "?#/:;+@&=";
+const std::string URI::RESERVED_FRAGMENT    = "";
+const std::string URI::ILLEGAL              = "%<>{}|\\\"^`!*'()$,[]";
 
 
 URI::URI():
@@ -333,12 +332,10 @@ void URI::setQuery(const std::string& query)
 
 void URI::addQueryParameter(const std::string& param, const std::string& val)
 {
-	std::string reserved(RESERVED_QUERY);
-	reserved += "=&";
 	if (!_query.empty()) _query += '&';
-	encode(param, reserved, _query);
+	encode(param, RESERVED_QUERY_PARAM, _query);
 	_query += '=';
-	encode(val, reserved, _query);
+	encode(val, RESERVED_QUERY_PARAM, _query);
 }
 
 
@@ -699,16 +696,30 @@ unsigned short URI::getWellKnownPort() const
 		return 22;
 	else if (_scheme == "telnet")
 		return 23;
+	else if (_scheme == "smtp")
+		return 25;
+	else if (_scheme == "dns")
+		return 53;
 	else if (_scheme == "http" || _scheme == "ws")
 		return 80;
 	else if (_scheme == "nntp")
 		return 119;
+	else if (_scheme == "imap")
+		return 143;
 	else if (_scheme == "ldap")
 		return 389;
 	else if (_scheme == "https" || _scheme == "wss")
 		return 443;
+	else if (_scheme == "smtps")
+		return 465;
 	else if (_scheme == "rtsp")
 		return 554;
+	else if (_scheme == "ldaps")
+		return 636;
+	else if (_scheme == "dnss")
+		return 853;
+	else if (_scheme == "imaps")
+		return 993;
 	else if (_scheme == "sip")
 		return 5060;
 	else if (_scheme == "sips")

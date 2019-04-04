@@ -1,8 +1,6 @@
 //
 // Socket.cpp
 //
-// $Id: //poco/1.4/Net/src/Socket.cpp#3 $
-//
 // Library: Net
 // Package: Sockets
 // Module:  Socket
@@ -24,9 +22,6 @@
 #elif defined(POCO_HAVE_FD_POLL)
 #include "Poco/SharedPtr.h"
 #include <poll.h>
-typedef Poco::SharedPtr<pollfd, 
-	Poco::ReferenceCounter, 
-	Poco::ReleaseArrayPolicy<pollfd> > SharedPollArray;
 #endif
 
 
@@ -55,7 +50,7 @@ Socket::Socket(const Socket& socket):
 	_pImpl->duplicate();
 }
 
-	
+
 Socket& Socket::operator = (const Socket& socket)
 {
 	if (&socket != this)
@@ -148,7 +143,7 @@ int Socket::select(SocketList& readList, SocketList& writeList, SocketList& exce
 
 		epollSize = eventLast - eventsIn;
 		if (epollSize == 0) return 0;
-		
+
 		epollfd = epoll_create(1);
 		if (epollfd < 0)
 		{
@@ -211,11 +206,12 @@ int Socket::select(SocketList& readList, SocketList& writeList, SocketList& exce
 	return readList.size() + writeList.size() + exceptList.size();
 
 #elif defined(POCO_HAVE_FD_POLL)
+	typedef Poco::SharedPtr<pollfd, Poco::ReferenceCounter, Poco::ReleaseArrayPolicy<pollfd> > SharedPollArray;
 
 	nfds_t nfd = readList.size() + writeList.size() + exceptList.size();
 	if (0 == nfd) return 0;
 
-	SharedPollArray pPollArr = new pollfd[nfd];
+	SharedPollArray pPollArr = new pollfd[nfd]();
 
 	int idx = 0;
 	for (SocketList::iterator it = readList.begin(); it != readList.end(); ++it)
@@ -229,7 +225,7 @@ int Socket::select(SocketList& readList, SocketList& writeList, SocketList& exce
 	for (SocketList::iterator it = writeList.begin(); it != writeList.end(); ++it)
 	{
 		SocketList::iterator pos = std::find(begR, endR, *it);
-		if (pos != endR) 
+		if (pos != endR)
 		{
 			pPollArr[pos-begR].events |= POLLOUT;
 			--nfd;
@@ -260,7 +256,7 @@ int Socket::select(SocketList& readList, SocketList& writeList, SocketList& exce
 	do
 	{
 		Poco::Timestamp start;
-		rc = ::poll(pPollArr, nfd, timeout.totalMilliseconds());
+		rc = ::poll(pPollArr, nfd, remainingTime.totalMilliseconds());
 		if (rc < 0 && SocketImpl::lastError() == POCO_EINTR)
 		{
 			Poco::Timestamp end;
@@ -353,7 +349,7 @@ int Socket::select(SocketList& readList, SocketList& writeList, SocketList& exce
 	}
 	while (rc < 0 && SocketImpl::lastError() == POCO_EINTR);
 	if (rc < 0) SocketImpl::error();
-	
+
 	SocketList readyReadList;
 	for (SocketList::const_iterator it = readList.begin(); it != readList.end(); ++it)
 	{
@@ -386,10 +382,85 @@ int Socket::select(SocketList& readList, SocketList& writeList, SocketList& exce
 				readyExceptList.push_back(*it);
 		}
 	}
-	std::swap(exceptList, readyExceptList);	
-	return rc; 
+	std::swap(exceptList, readyExceptList);
+	return rc;
 
 #endif // POCO_HAVE_FD_EPOLL
+}
+
+
+SocketBufVec Socket::makeBufVec(std::size_t size, std::size_t bufLen)
+{
+	SocketBufVec buf(size);
+	SocketBufVec::iterator it = buf.begin();
+	SocketBufVec::iterator end = buf.end();
+	for (; it != end; ++it)
+	{
+		// TODO: use memory pool
+		*it = makeBuffer(malloc(bufLen), bufLen);
+	}
+	return buf;
+}
+
+
+void Socket::destroyBufVec(SocketBufVec& buf)
+{
+	SocketBufVec::iterator it = buf.begin();
+	SocketBufVec::iterator end = buf.end();
+	for (; it != end; ++it)
+	{
+#if defined(POCO_OS_FAMILY_WINDOWS)
+		free(it->buf);
+#elif defined(POCO_OS_FAMILY_UNIX)
+		free(it->iov_base);
+#endif
+	}
+	SocketBufVec().swap(buf);
+}
+
+
+SocketBuf Socket::makeBuffer(void* buffer, std::size_t length)
+{
+	SocketBuf ret;
+#if defined(POCO_OS_FAMILY_WINDOWS)
+	ret.buf = reinterpret_cast<char*>(buffer);
+	ret.len = static_cast<ULONG>(length);
+#elif defined(POCO_OS_FAMILY_UNIX)
+	ret.iov_base = buffer;
+	ret.iov_len = length;
+#else
+	throw NotImplementedException("Socket::makeBuffer(void*, size_t)");
+#endif
+	return ret;
+}
+
+
+SocketBufVec Socket::makeBufVec(const std::vector<char*>& vec)
+{
+	SocketBufVec buf(vec.size());
+	SocketBufVec::iterator it = buf.begin();
+	SocketBufVec::iterator end = buf.end();
+	std::vector<char*>::const_iterator vIt = vec.begin();
+	for (; it != end; ++it, ++vIt)
+	{
+		*it = makeBuffer(*vIt, strlen(*vIt));
+	}
+	return buf;
+}
+
+
+SocketBufVec Socket::makeBufVec(const std::vector<std::string>& vec)
+{
+	SocketBufVec buf(vec.size());
+	SocketBufVec::iterator it = buf.begin();
+	SocketBufVec::iterator end = buf.end();
+	std::vector<std::string>::const_iterator vIt = vec.begin();
+	for (; it != end; ++it, ++vIt)
+	{
+		char* c = const_cast<char*>(vIt->data());
+		*it = makeBuffer(reinterpret_cast<void*>(c), vIt->size());
+	}
+	return buf;
 }
 
 

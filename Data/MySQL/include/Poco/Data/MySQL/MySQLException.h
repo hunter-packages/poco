@@ -1,9 +1,7 @@
 //
 // MySQLException.h
 //
-// $Id: //poco/1.4/Data/MySQL/include/Poco/Data/MySQL/MySQLException.h#1 $
-//
-// Library: Data
+// Library: Data/MySQL
 // Package: MySQL
 // Module:  MySQLException
 //
@@ -24,10 +22,13 @@
 #include <typeinfo>
 #include <string>
 
-
+#ifndef MYSQL
 typedef struct st_mysql MYSQL;
-typedef struct st_mysql_stmt MYSQL_STMT;
+#endif
 
+#ifndef MYSQL_STMT
+typedef struct st_mysql_stmt MYSQL_STMT;
+#endif
 
 namespace Poco {
 namespace Data {

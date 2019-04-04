@@ -1,8 +1,6 @@
 //
 // File_WIN32.cpp
 //
-// $Id: //poco/1.4/Foundation/src/File_WIN32.cpp#1 $
-//
 // Library: Foundation
 // Package: Filesystem
 // Module:  File
@@ -165,8 +163,14 @@ bool FileImpl::isDirectoryImpl() const
 
 bool FileImpl::isLinkImpl() const
 {
-	return false;
+	poco_assert (!_path.empty());
+
+	DWORD attr = GetFileAttributes(_upath.c_str());
+	if (attr == INVALID_FILE_ATTRIBUTES)
+		handleLastErrorImpl(_path);
+	return (attr & FILE_ATTRIBUTE_DIRECTORY) == 0 && (attr & FILE_ATTRIBUTE_REPARSE_POINT) != 0;
 }
+
 
 
 bool FileImpl::isDeviceImpl() const
@@ -302,6 +306,33 @@ void FileImpl::renameToImpl(const std::string& path)
 }
 
 
+void FileImpl::linkToImpl(const std::string& path, int type) const
+{
+	poco_assert (!_path.empty());
+
+	if (type == 0)
+	{
+		if (CreateHardLinkA(path.c_str(), _path.c_str(), NULL) == 0)
+			handleLastErrorImpl(_path);
+	}
+	else
+	{
+#if _WIN32_WINNT >= 0x0600 && defined(SYMBOLIC_LINK_FLAG_DIRECTORY)
+		DWORD flags = 0;
+		if (isDirectoryImpl()) flags |= SYMBOLIC_LINK_FLAG_DIRECTORY;
+#ifdef SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE
+		flags |= SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE;
+#endif
+		if (CreateSymbolicLinkA(path.c_str(), _path.c_str(), flags) == 0)
+			handleLastErrorImpl(_path);
+#else
+		throw Poco::NotImplementedException("Symbolic link support not available in used version of the Windows SDK")
+#endif
+
+	}
+}
+
+
 void FileImpl::removeImpl()
 {
 	poco_assert (!_path.empty());
@@ -349,6 +380,39 @@ bool FileImpl::createDirectoryImpl()
 }
 
 
+FileImpl::FileSizeImpl FileImpl::totalSpaceImpl() const
+{
+	poco_assert(!_path.empty());
+
+	ULARGE_INTEGER space;
+	if (!GetDiskFreeSpaceExA(_path.c_str(), NULL, &space, NULL))
+		handleLastErrorImpl(_path);
+	return space.QuadPart;
+}
+
+
+FileImpl::FileSizeImpl FileImpl::usableSpaceImpl() const
+{
+	poco_assert(!_path.empty());
+
+	ULARGE_INTEGER space;
+	if (!GetDiskFreeSpaceExA(upath.c_str(), &space, NULL, NULL))
+		handleLastErrorImpl(_path);
+	return space.QuadPart;
+}
+
+
+FileImpl::FileSizeImpl FileImpl::freeSpaceImpl() const
+{
+	poco_assert(!_path.empty());
+
+	ULARGE_INTEGER space;
+	if (!GetDiskFreeSpaceExA(_path.c_str(), NULL, NULL, &space))
+		handleLastErrorImpl(_path);
+	return space.QuadPart;
+}
+
+
 void FileImpl::handleLastErrorImpl(const std::string& path)
 {
 	DWORD err = GetLastError();
@@ -376,7 +440,7 @@ void FileImpl::handleLastErrorImpl(const std::string& path)
 	case ERROR_CANNOT_MAKE:
 		throw CreateFileException(path, err);
 	case ERROR_DIR_NOT_EMPTY:
-		throw FileException("directory not empty", path, err);
+		throw DirectoryNotEmptyException(path, err);
 	case ERROR_WRITE_FAULT:
 		throw WriteFileException(path, err);
 	case ERROR_READ_FAULT:

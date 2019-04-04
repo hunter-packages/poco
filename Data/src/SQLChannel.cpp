@@ -1,9 +1,7 @@
 //
 // SQLChannel.cpp
 //
-// $Id: //poco/Main/Data/src/SQLChannel.cpp#3 $
-//
-// Library: Net
+// Library: Data
 // Package: Logging
 // Module:  SQLChannel
 //

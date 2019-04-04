@@ -1,9 +1,7 @@
 //
 // Notifier.cpp
 //
-// $Id: //poco/Main/Data/SQLite/src/Notifier.cpp#5 $
-//
-// Library: SQLite
+// Library: Data/SQLite
 // Package: SQLite
 // Module:  Notifier
 //
@@ -25,9 +23,7 @@ namespace SQLite {
 
 
 Notifier::Notifier(const Session& session, EnabledEventType enabled):
-	_session(session),
-	_row(),
-	_enabledEvents()
+	_session(session)
 {
 	if (enabled & SQLITE_NOTIFY_UPDATE)   enableUpdate();
 	if (enabled & SQLITE_NOTIFY_COMMIT)   enableCommit();
@@ -37,9 +33,7 @@ Notifier::Notifier(const Session& session, EnabledEventType enabled):
 
 Notifier::Notifier(const Session& session, const Any& value, EnabledEventType enabled):
 	_session(session),
-	_value(value),
-	_row(),
-	_enabledEvents()
+	_value(value)
 {
 	if (enabled & SQLITE_NOTIFY_UPDATE)   enableUpdate();
 	if (enabled & SQLITE_NOTIFY_COMMIT)   enableCommit();
@@ -160,18 +154,22 @@ void Notifier::sqliteUpdateCallbackFn(void* pVal, int opCode, const char* pDB, c
 {
 	poco_check_ptr(pVal);
 	Notifier* pV = reinterpret_cast<Notifier*>(pVal);
+	
 	if (opCode == Utility::OPERATION_INSERT)
 	{
+		pV->_table = pTable;
 		pV->_row = row;
 		pV->insert.notify(pV);
 	}
 	else if (opCode == Utility::OPERATION_UPDATE)
 	{
+		pV->_table = pTable;
 		pV->_row = row;
 		pV->update.notify(pV);
 	}
 	else if (opCode == Utility::OPERATION_DELETE)
 	{
+		pV->_table = pTable;
 		pV->_row = row;
 		pV->erase.notify(pV);
 	}

@@ -1,8 +1,6 @@
 //
 // Config.h
 //
-// $Id: //poco/1.4/Foundation/include/Poco/Config.h#3 $
-//
 // Library: Foundation
 // Package: Core
 // Module:  Foundation
@@ -35,10 +33,10 @@
 
 
 // Define to disable automatic initialization
-// Defining this will disable ALL automatic 
+// Defining this will disable ALL automatic
 // initialization framework-wide (e.g. Net
 // on Windows, all Data back-ends, etc).
-// 
+//
 // #define POCO_NO_AUTOMATIC_LIB_INIT
 
 
@@ -77,19 +75,19 @@
 // #define POCO_THREAD_PRIORITY_MAX 31
 
 
-// Define to disable small object optimization. If not 
+// Define to disable small object optimization. If not
 // defined, Any and Dynamic::Var (and similar optimization
-// candidates) will be auto-allocated on the stack in 
+// candidates) will be auto-allocated on the stack in
 // cases when value holder fits into POCO_SMALL_OBJECT_SIZE
 // (see below).
-// 
+//
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // !!! NOTE: Any/Dynamic::Var SOO will NOT work reliably   !!!
 // !!! without C++11 (std::aligned_storage in particular). !!!
 // !!! Only comment this out if your compiler has support  !!!
 // !!! for std::aligned_storage.                           !!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// 
+//
 #ifndef POCO_ENABLE_SOO
 #define POCO_NO_SOO
 #endif
@@ -117,7 +115,7 @@
 
 
 // No automatic registration of FileChannel in
-// LoggingFactory - avoids FileChannel and friends 
+// LoggingFactory - avoids FileChannel and friends
 // being linked to executable.
 // #define POCO_NO_FILECHANNEL
 
@@ -143,13 +141,13 @@
 // #define POCO_UTIL_NO_INIFILECONFIGURATION
 
 
-// No support for JSON configuration in 
+// No support for JSON configuration in
 // Poco::Util::Application. Avoids linking of JSON
 // library and saves a few 100 Kbytes.
 // #define POCO_UTIL_NO_JSONCONFIGURATION
 
 
-// No support for XML configuration in 
+// No support for XML configuration in
 // Poco::Util::Application. Avoids linking of XML
 // library and saves a few 100 Kbytes.
 // #define POCO_UTIL_NO_XMLCONFIGURATION
@@ -172,9 +170,38 @@
 // #define POCO_LOG_DEBUG
 
 
+// OpenSSL on Windows
+//
+// Poco has its own OpenSSL build system.
+// See <https://github.com/pocoproject/openssl/blob/master/README.md>
+// for details.
+//
+// These options are Windows only.
+//
+// To disable the use of Poco-provided OpenSSL binaries,
+// define POCO_EXTERNAL_OPENSSL.
+//
+// Possible values:
+//   POCO_EXTERNAL_OPENSSL_SLPRO:
+//     Automatically link OpenSSL libraries from OpenSSL Windows installer provided
+//     by Shining Light Productions <http://slproweb.com/products/Win32OpenSSL.html>
+//     The (global) library search path must be set accordingly.
+//   POCO_EXTERNAL_OPENSSL_DEFAULT:
+//     Automatically link OpenSSL libraries from standard OpenSSL Windows build.
+//     The (global) library search path must be set accordingly.
+//   empty or other value:
+//     Do not link any OpenSSL libraries automatically. You will have to edit the
+//     Visual C++ project files for Crypto and NetSSL_OpenSSL.
+#define POCO_EXTERNAL_OPENSSL POCO_EXTERNAL_OPENSSL_SLPRO
+
+
 // Define to prevent changing the suffix for shared libraries
 // to "d.so", "d.dll", etc. for _DEBUG builds in Poco::SharedLibrary.
 // #define POCO_NO_SHARED_LIBRARY_DEBUG_SUFFIX
+
+
+// Disarm POCO_DEPRECATED macro.
+// #define POCO_NO_DEPRECATED
 
 
 #endif // Foundation_Config_INCLUDED

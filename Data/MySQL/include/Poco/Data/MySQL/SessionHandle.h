@@ -1,9 +1,7 @@
 //
 // SesssionHandle.h
 //
-// $Id: //poco/1.4/Data/MySQL/include/Poco/Data/MySQL/SessionHandle.h#1 $
-//
-// Library: Data
+// Library: Data/MySQL
 // Package: MySQL
 // Module:  SessionHandle
 //
@@ -66,6 +64,9 @@ public:
 
 	void rollback();
 		/// Rollback transaction
+
+	void reset();
+		/// Reset connection with dababase and clears session state, but without disconnecting
 
 	operator MYSQL* ();
 

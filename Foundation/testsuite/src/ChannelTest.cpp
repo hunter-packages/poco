@@ -1,8 +1,6 @@
 //
 // ChannelTest.cpp
 //
-// $Id: //poco/1.4/Foundation/testsuite/src/ChannelTest.cpp#1 $
-//
 // Copyright (c) 2004-2006, Applied Informatics Software Engineering GmbH.
 // and Contributors.
 //
@@ -65,7 +63,7 @@ void ChannelTest::testSplitter()
 	pSplitter->addChannel(pChannel.get());
 	Message msg;
 	pSplitter->log(msg);
-	assert (pChannel->list().size() == 2);
+	assertTrue (pChannel->list().size() == 2);
 }
 
 
@@ -78,7 +76,7 @@ void ChannelTest::testAsync()
 	pAsync->log(msg);
 	pAsync->log(msg);
 	pAsync->close();
-	assert (pChannel->list().size() == 2);
+	assertTrue (pChannel->list().size() == 2);
 }
 
 
@@ -89,8 +87,8 @@ void ChannelTest::testFormatting()
 	AutoPtr<FormattingChannel> pFormatterChannel = new FormattingChannel(pFormatter, pChannel.get());
 	Message msg("Source", "Text", Message::PRIO_INFORMATION);
 	pFormatterChannel->log(msg);
-	assert (pChannel->list().size() == 1);
-	assert (pChannel->list().begin()->getText() == "Source: Text");
+	assertTrue (pChannel->list().size() == 1);
+	assertTrue (pChannel->list().begin()->getText() == "Source: Text");
 }
 
 
@@ -112,7 +110,7 @@ void ChannelTest::testStream()
 	AutoPtr<FormattingChannel> pFormatterChannel = new FormattingChannel(pFormatter, pChannel.get());
 	Message msg("Source", "Text", Message::PRIO_INFORMATION);
 	pFormatterChannel->log(msg);
-	assert (str.str().find("Source: Text") == 0);
+	assertTrue (str.str().find("Source: Text") == 0);
 }
 
 

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="Foundation"
-	ProjectGUID="{8164D41D-B053-405B-826C-CF37AC0EF176}"
+	ProjectGUID="{B01196CC-B693-4548-8464-2FF60499E73F}"
 	RootNamespace="Foundation"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="0"
@@ -18,8 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="debug_shared|Win32"
-			OutputDirectory="obj\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj\$(ConfigurationName)"
+			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -40,9 +40,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions=""
 				Optimization="0"
-				AdditionalIncludeDirectories=".\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;Foundation_EXPORTS;PCRE_STATIC"
+				AdditionalIncludeDirectories=".\include;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;Foundation_EXPORTS"
 				StringPooling="true"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -56,6 +57,7 @@
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 				CompileAs="0"
+				DisableSpecificWarnings=""
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -68,10 +70,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions=""
 				AdditionalDependencies="iphlpapi.lib"
 				OutputFile="..\bin\PocoFoundationd.dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\lib"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="..\bin\PocoFoundationd.pdb"
 				SubSystem="1"
@@ -102,8 +106,8 @@
 		</Configuration>
 		<Configuration
 			Name="release_shared|Win32"
-			OutputDirectory="obj\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj\$(ConfigurationName)"
+			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -124,15 +128,14 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions=""
 				Optimization="4"
 				InlineFunctionExpansion="1"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories=".\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;Foundation_EXPORTS;PCRE_STATIC"
-				GeneratePreprocessedFile="0"
-				KeepComments="false"
+				AdditionalIncludeDirectories=".\include;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;Foundation_EXPORTS"
 				StringPooling="true"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
@@ -144,6 +147,7 @@
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
+				DisableSpecificWarnings=""
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -156,12 +160,13 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions=""
 				AdditionalDependencies="iphlpapi.lib"
 				OutputFile="..\bin\PocoFoundation.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="..\lib"
 				GenerateDebugInformation="false"
-				ProgramDatabaseFile=""
 				SubSystem="1"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -191,158 +196,10 @@
 			/>
 		</Configuration>
 		<Configuration
-			Name="release_static_md|Win32"
-			OutputDirectory="obj\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj\Foundation\$(ConfigurationName)"
-			ConfigurationType="4"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="4"
-				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="true"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="true"
-				AdditionalIncludeDirectories=".\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;Foundation_EXPORTS;POCO_STATIC;PCRE_STATIC"
-				GeneratePreprocessedFile="0"
-				KeepComments="false"
-				StringPooling="true"
-				RuntimeLibrary="2"
-				BufferSecurityCheck="false"
-				TreatWChar_tAsBuiltInType="true"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="0"
-				CompileAs="0"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalDependencies="ws2_32.lib iphlpapi.lib"
-				OutputFile="..\lib\PocoFoundationmd.lib"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="debug_static_md|Win32"
-			OutputDirectory="obj\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj\Foundation\$(ConfigurationName)"
-			ConfigurationType="4"
-			CharacterSet="2"
-			>
-			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories=".\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;Foundation_EXPORTS;POCO_STATIC;PCRE_STATIC"
-				StringPooling="true"
-				MinimalRebuild="true"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
-				BufferSecurityCheck="true"
-				TreatWChar_tAsBuiltInType="true"
-				ForceConformanceInForLoopScope="true"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\PocoFoundationmdd.pdb"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-				CompileAs="0"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-			/>
-			<Tool
-				Name="VCLibrarianTool"
-				AdditionalDependencies="ws2_32.lib iphlpapi.lib"
-				OutputFile="..\lib\PocoFoundationmdd.lib"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
 			Name="debug_static_mt|Win32"
-			OutputDirectory="obj\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj\$(ConfigurationName)"
+			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -362,9 +219,10 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions=""
 				Optimization="0"
-				AdditionalIncludeDirectories=".\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;Foundation_EXPORTS;POCO_STATIC;PCRE_STATIC"
+				AdditionalIncludeDirectories=".\include;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;POCO_STATIC;"
 				StringPooling="true"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -374,11 +232,12 @@
 				ForceConformanceInForLoopScope="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="..\lib\PocoFoundationmtd.pdb"
+				ProgramDataBaseFileName="..\lib\PocoFoundationMTd.pdb"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 				CompileAs="0"
+				DisableSpecificWarnings=""
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -391,8 +250,8 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="ws2_32.lib iphlpapi.lib"
-				OutputFile="..\lib\PocoFoundationmtd.lib"
+				AdditionalDependencies="iphlpapi.lib"
+				OutputFile="..\lib\PocoFoundationMTd.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -412,10 +271,9 @@
 		</Configuration>
 		<Configuration
 			Name="release_static_mt|Win32"
-			OutputDirectory="obj\Foundation\$(ConfigurationName)"
-			IntermediateDirectory="obj\Foundation\$(ConfigurationName)"
+			OutputDirectory="obj\$(ConfigurationName)"
+			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="4"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -435,15 +293,14 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions=""
 				Optimization="4"
 				InlineFunctionExpansion="1"
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories=".\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;Foundation_EXPORTS;POCO_STATIC;PCRE_STATIC"
-				GeneratePreprocessedFile="0"
-				KeepComments="false"
+				AdditionalIncludeDirectories=".\include;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;POCO_STATIC;"
 				StringPooling="true"
 				RuntimeLibrary="0"
 				BufferSecurityCheck="false"
@@ -455,6 +312,7 @@
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
+				DisableSpecificWarnings=""
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -467,8 +325,157 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				AdditionalDependencies="ws2_32.lib iphlpapi.lib"
-				OutputFile="..\lib\PocoFoundationmt.lib"
+				AdditionalDependencies="iphlpapi.lib"
+				OutputFile="..\lib\PocoFoundationMT.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="debug_static_md|Win32"
+			OutputDirectory="obj\$(ConfigurationName)"
+			IntermediateDirectory="obj\$(ConfigurationName)"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=""
+				Optimization="0"
+				AdditionalIncludeDirectories=".\include;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;POCO_STATIC;"
+				StringPooling="true"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				BufferSecurityCheck="true"
+				TreatWChar_tAsBuiltInType="true"
+				ForceConformanceInForLoopScope="true"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				ProgramDataBaseFileName="..\lib\PocoFoundationMDd.pdb"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="3"
+				CompileAs="0"
+				DisableSpecificWarnings=""
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalDependencies="iphlpapi.lib"
+				OutputFile="..\lib\PocoFoundationMDd.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="release_static_md|Win32"
+			OutputDirectory="obj\$(ConfigurationName)"
+			IntermediateDirectory="obj\$(ConfigurationName)"
+			ConfigurationType="4"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=""
+				Optimization="4"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="true"
+				AdditionalIncludeDirectories=".\include;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;POCO_STATIC;"
+				StringPooling="true"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
+				TreatWChar_tAsBuiltInType="true"
+				ForceConformanceInForLoopScope="true"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="0"
+				CompileAs="0"
+				DisableSpecificWarnings=""
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				AdditionalDependencies="iphlpapi.lib"
+				OutputFile="..\lib\PocoFoundationMD.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -528,7 +535,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -544,15 +559,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -596,22 +603,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -627,34 +618,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\Environment_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -664,15 +627,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -700,7 +655,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -716,15 +679,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -752,7 +707,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -768,15 +731,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -820,7 +775,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -836,15 +799,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -872,7 +827,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -888,15 +851,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -924,7 +879,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -940,15 +903,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -976,7 +931,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -992,15 +955,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1028,22 +983,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -1059,6 +998,26 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="debug_static_md|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_md|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\src\JSONString.cpp"
+					>
 				</File>
 				<File
 					RelativePath=".\src\MemoryPool.cpp"
@@ -1108,7 +1067,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1124,15 +1091,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1217,10 +1176,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\Environment_VMS.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\Environment_WIN32.h"
 					>
 				</File>
@@ -1277,6 +1232,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\include\Poco\JSONString.h"
+					>
+				</File>
+				<File
 					RelativePath=".\include\Poco\MemoryPool.h"
 					>
 				</File>
@@ -1317,15 +1276,19 @@
 					>
 				</File>
 				<File
+					RelativePath=".\include\Poco\OrderedMap.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\Poco\OrderedSet.h"
+					>
+				</File>
+				<File
 					RelativePath=".\include\Poco\Platform.h"
 					>
 				</File>
 				<File
 					RelativePath=".\include\Poco\Platform_POSIX.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\Platform_VMS.h"
 					>
 				</File>
 				<File
@@ -1452,7 +1415,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1468,15 +1439,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1504,7 +1467,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1520,15 +1491,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1812,7 +1775,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1828,15 +1799,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1864,7 +1827,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1880,15 +1851,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1920,7 +1883,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1936,15 +1907,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1972,7 +1935,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -1988,15 +1959,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2032,7 +1995,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2048,15 +2019,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2084,7 +2047,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2100,15 +2071,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2140,7 +2103,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2156,15 +2127,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2192,7 +2155,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2208,15 +2179,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2244,7 +2207,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2260,15 +2231,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2304,7 +2267,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2320,15 +2291,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2356,7 +2319,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2372,15 +2343,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2652,7 +2615,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2668,15 +2639,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2704,22 +2667,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -2735,34 +2682,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\SharedLibrary_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -2772,15 +2691,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2808,7 +2719,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2824,15 +2743,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2860,7 +2771,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2876,15 +2795,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -2922,10 +2833,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\SharedLibrary_UNIX.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\SharedLibrary_VMS.h"
 					>
 				</File>
 				<File
@@ -3136,22 +3043,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -3167,34 +3058,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\LogFile_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -3204,15 +3067,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3240,7 +3095,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3256,15 +3119,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3292,7 +3147,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3308,15 +3171,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3347,58 +3202,6 @@
 				<File
 					RelativePath=".\src\NullChannel.cpp"
 					>
-				</File>
-				<File
-					RelativePath=".\src\OpcomChannel.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 				</File>
 				<File
 					RelativePath=".\src\PatternFormatter.cpp"
@@ -3444,7 +3247,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3460,15 +3271,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3533,10 +3336,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\LogFile_VMS.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\LogFile_WIN32.h"
 					>
 				</File>
@@ -3566,10 +3365,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\NullChannel.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\OpcomChannel.h"
 					>
 				</File>
 				<File
@@ -3634,7 +3429,16 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="mc -h &quot;$(InputDir).&quot; -r &quot;$(InputDir).&quot; &quot;$(InputPath)&#x0D;&#x0A;"
+							Outputs="$(InputDir)\pocomsg.rc;$(InputDir)\pocomsg.h;"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						>
 						<Tool
 							Name="VCCustomBuildTool"
@@ -3652,16 +3456,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							CommandLine="mc -h &quot;$(InputDir).&quot; -r &quot;$(InputDir).&quot; &quot;$(InputPath)&#x0D;&#x0A;"
-							Outputs="$(InputDir)\pocomsg.rc;$(InputDir)\pocomsg.h;"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						>
 						<Tool
 							Name="VCCustomBuildTool"
@@ -3778,22 +3573,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -3809,34 +3588,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\DirectoryIterator_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -3846,15 +3597,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3882,7 +3625,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3898,15 +3649,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3934,7 +3677,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3950,15 +3701,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -3994,22 +3737,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -4025,34 +3752,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\File_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -4062,15 +3761,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4098,7 +3789,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4114,15 +3813,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4150,7 +3841,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4166,15 +3865,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4210,22 +3901,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -4241,34 +3916,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\Path_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -4278,15 +3925,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4314,7 +3953,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4330,15 +3977,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4366,7 +4005,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4382,15 +4029,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4415,10 +4054,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\DirectoryIterator_VMS.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\DirectoryIterator_WIN32.h"
 					>
 				</File>
@@ -4439,10 +4074,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\File_VMS.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\File_WIN32.h"
 					>
 				</File>
@@ -4460,10 +4091,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\Path_UNIX.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\Path_VMS.h"
 					>
 				</File>
 				<File
@@ -4510,22 +4137,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -4541,34 +4152,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\NamedEvent_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -4578,15 +4161,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4614,7 +4189,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4630,15 +4213,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4666,7 +4241,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4682,15 +4265,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4722,22 +4297,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -4753,34 +4312,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\NamedMutex_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -4790,15 +4321,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4826,7 +4349,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4842,15 +4373,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4878,7 +4401,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4894,15 +4425,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4938,7 +4461,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4954,15 +4485,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -4990,7 +4513,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5006,15 +4537,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5042,7 +4565,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5058,15 +4589,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5102,22 +4625,6 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="debug_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
 						Name="debug_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
@@ -5133,34 +4640,6 @@
 							Name="VCCLCompilerTool"
 						/>
 					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\src\Process_VMS.cpp"
-					>
-					<FileConfiguration
-						Name="debug_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_shared|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_md|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
 					<FileConfiguration
 						Name="debug_static_md|Win32"
 						ExcludedFromBuild="true"
@@ -5170,15 +4649,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5206,7 +4677,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5222,15 +4701,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5258,7 +4729,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5274,15 +4753,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5314,7 +4785,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5330,15 +4809,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5366,7 +4837,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5382,15 +4861,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5418,7 +4889,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5434,15 +4913,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5463,10 +4934,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\include\Poco\NamedEvent_VMS.h"
-					>
-				</File>
-				<File
 					RelativePath=".\include\Poco\NamedEvent_WIN32.h"
 					>
 				</File>
@@ -5480,10 +4947,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\NamedMutex_UNIX.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\NamedMutex_VMS.h"
 					>
 				</File>
 				<File
@@ -5524,10 +4987,6 @@
 				</File>
 				<File
 					RelativePath=".\include\Poco\Process_UNIX.h"
-					>
-				</File>
-				<File
-					RelativePath=".\include\Poco\Process_VMS.h"
 					>
 				</File>
 				<File
@@ -5650,7 +5109,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5666,15 +5133,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5702,7 +5161,15 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="release_static_md|Win32"
+						Name="debug_static_mt|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="release_static_mt|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -5718,15 +5185,7 @@
 						/>
 					</FileConfiguration>
 					<FileConfiguration
-						Name="debug_static_mt|Win32"
-						ExcludedFromBuild="true"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="release_static_mt|Win32"
+						Name="release_static_md|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -6312,7 +5771,7 @@
 			RelativePath="..\DLLVersion.rc"
 			>
 			<FileConfiguration
-				Name="release_static_md|Win32"
+				Name="debug_shared|Win32"
 				ExcludedFromBuild="true"
 				>
 				<Tool
@@ -6320,7 +5779,7 @@
 				/>
 			</FileConfiguration>
 			<FileConfiguration
-				Name="debug_static_md|Win32"
+				Name="release_shared|Win32"
 				ExcludedFromBuild="true"
 				>
 				<Tool
@@ -6337,6 +5796,22 @@
 			</FileConfiguration>
 			<FileConfiguration
 				Name="release_static_mt|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCResourceCompilerTool"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="debug_static_md|Win32"
+				ExcludedFromBuild="true"
+				>
+				<Tool
+					Name="VCResourceCompilerTool"
+				/>
+			</FileConfiguration>
+			<FileConfiguration
+				Name="release_static_md|Win32"
 				ExcludedFromBuild="true"
 				>
 				<Tool

@@ -1,9 +1,7 @@
 //
 // StatementExecutor.cpp
 //
-// $Id: //poco/1.3/Data/MySQL/src/StatementExecutor.cpp#1 $
-//
-// Library: Data
+// Library: Data/MySQL
 // Package: MySQL
 // Module:  StatementExecutor
 //
@@ -141,9 +139,10 @@ bool StatementExecutor::fetchColumn(std::size_t n, MYSQL_BIND *bind)
 	return (res == 0);
 }
 
+
 int StatementExecutor::getAffectedRowCount() const
 {
-	return _affectedRowCount;
+	return static_cast<int>(_affectedRowCount);
 }
 
 
